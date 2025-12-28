@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+
+#bg-video{
+  position:fixed; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; z-index:-1;
+}
+
+.profile-wrapper{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.profile-card{
+  width:380px;
+  backdrop-filter:blur(25px);
+  background:rgba(255,255,255,0.15);
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  color:#fff;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.profile-card img{
+  width:120px;height:120px;
+  border-radius:50%;
+  border:3px solid cyan;
+  margin-bottom:10px;
+}
+
+.profile-card h2{margin:5px 0}
+.profile-card p{font-size:14px;opacity:.9}
+
+/* Skills */
+.skills{
+  margin-top:20px;
+  text-align:left;
+}
+
+.skill{
+  margin-bottom:12px;
+}
+
+.skill span{
+  font-size:13px;
+}
+
+.bar{
+  height:6px;
+  background:rgba(255,255,255,.3);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.bar div{
+  height:100%;
+  background:cyan;
+}
+
+/* Social Icons */
+.social{
+  margin-top:15px;
+}
+
+.social a{
+  font-size:22px;
+  margin:0 8px;
+  color:#fff;
+  transition:.3s;
+}
+
+.social a:hover{
+  color:cyan;
+  transform:scale(1.2);
+}
+
+/* Buttons */
+.actions{
+  margin-top:18px;
+}
+
+.actions button, .actions a{
+  margin:6px;
+  padding:9px 20px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  background:cyan;
+  color:#000;
+  text-decoration:none;
+}
+
+/* Edit Modal */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.6);
+}
+
+.modal-box{
+  background:#111;
+  padding:25px;
+  border-radius:15px;
+  width:300px;
+  color:#fff;
+}
+
+.modal-box input{
+  width:100%;
+  margin:8px 0;
+  padding:8px;
+  border-radius:8px;
+  border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="https://res.cloudinary.com/do2cz3etz/video/upload/v1766911823/3bg_nwsr9z.mp4" type="video/mp4">
+</video>
+
+<div class="profile-wrapper">
+  <div class="profile-card">
+
+    <img src="pfp.png">
+    <h2 id="name">Prince</h2>
+    <p id="role">Frontend Developer</p>
+    <div class="actions"><button onclick="openEdit()">Edit</button></div>
+
+    <!-- Skills -->
+    <div class="skills">
+      <div class="skill">
+        <span>HTML</span>
+        <div class="bar"><div style="width:90%"></div></div>
+      </div>
+      <div class="skill">
+        <span>CSS</span>
+        <div class="bar"><div style="width:85%"></div></div>
+      </div>
+      <div class="skill">
+        <span>JavaScript</span>
+        <div class="bar"><div style="width:70%"></div></div>
+      </div>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social">
+      <a href="https://github.com/kumarsuryavanshiprince-creator"><i class="bx bxl-github"></i></a>
+      <a href="https://www.instagram.com/__0gre__?igsh=MWVjZDZweWNjaDh5Zw=="><i class="bx bxl-instagram"></i></a>
+      <a href="mailto:kumarsuryavanshiprince@gmail.com"><i class="bx bx-envelope"></i>
+ </a>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="index.html">Logout</a>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3>Edit Profile</h3>
+    <input id="editName" placeholder="Name">
+    <input id="editRole" placeholder="Role">
+    <button onclick="save()">Save</button>
+  </div>
+</div>
+
+<script>
+function openEdit(){
+  modal.style.display="flex";
+}
+
+function save(){
+  document.getElementById("name").innerText = editName.value;
+  document.getElementById("role").innerText = editRole.value;
+  modal.style.display="none";
+}
+</script>
+
+
+</body>
+</html>
